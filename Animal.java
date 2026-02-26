@@ -22,16 +22,27 @@ public class Animal
 	     */
 	    public Animal()
 	    {
-
+			age = 0;
+			alive = true;
+			sound = "";
 	    }
 
+		public Animal(String sound, int age)
+	    {
+			this.age = age;
+			this.sound = sound;
+	    }
 	    /**
 	    * Check whether the animal is alive or not.
 	    * @return True if the animal is still alive.
 	    */
         public boolean isAlive()
     	{
-
+			if(alive)
+			{
+				return true;
+			}
+			return false;
     	}
 
      	/**
@@ -39,7 +50,7 @@ public class Animal
      	*/
      	public void kill()
      	{
-
+			alive = false;
      	}
 
      	/**
@@ -48,8 +59,31 @@ public class Animal
      	*/
      	public String speak()
      	{
-     		return "";
+     		return "" + sound;
      	}
+
+
+		public void eat(){
+			age++;
+		}
+
+		public int getAge(){
+			return age;
+		}
+		public boolean equals(Animal john){
+			boolean age = false;
+			boolean isPig = false;
+
+			if((john.getAge() == this.age))
+			{
+				age = true;
+			}
+			if((john.getClass() == this.getClass()))
+			{
+				isPig = true;
+			}
+			return(age && isPig);
+		}
 
      	/**
      	* If you attempt to print the animal, if the animal is alive print its age and have it make
@@ -58,6 +92,10 @@ public class Animal
      	*/
      	public String toString()
      	{
-     		return "";
+			if(alive)
+			{
+				return "age:" + age + "animal sound: " + sound;
+			}
+     		return "The animal lived for " + age + " years.";
      	}
 }
